@@ -1,0 +1,12 @@
+---
+- hosts: LXCs
+  become: true
+  tasks:
+    - name: ensure file exists
+      copy:
+        content: ""
+        dest: /etc/nologin
+        force: false
+        group: sys
+        owner: root
+        mode: 0555
