@@ -1,12 +1,9 @@
 ---
-- hosts: test
-  become: true
+- name: Create an empty file on the destination
+  hosts: test
   tasks:
-    - name: ensure file exists
-      copy:
-        content: ""
-        dest: /etc/nologin
-        force: false
-        group: sys
-        owner: root
-        mode: 0555
+    - name: Ensure the file exists
+      ansible.builtin.file:
+        path: /tmp/semaphore_test.txt
+        state: touch
+        mode: '0644'
